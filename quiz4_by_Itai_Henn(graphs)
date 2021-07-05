@@ -1,5 +1,4 @@
-# written and collect by Itai Henn
-#find me on LinkedIn: linkedin.com/in/itai-henn-a2085918b
+# # written and collect by Itai Henn
 # Python3 program for the above approach
 
 import copy
@@ -105,14 +104,21 @@ def NegCycleBellmanFord(graph, src):
 # Driver Code
 if __name__ == '__main__':
     # Number of vertices in graph
-    V = 4;
+    V = 15;
 
     # Number of edges in graph
-    E = 4;
-    graph = createGraph(V, E);
-
+    E = 0
     # Given Graph
-    matrix = [[0,1,0,0],[0,0,-1,0],[0,0,0,-1],[-1,0,0,0]]
+    matrix = [[0, 1,0, 0],[0, 0, -1, 0],[0, 0, 0, -1],[-1, 0, 0, 0]]
+        #[[ 0, 0 ,0 ,0, 0, 0, 5, 3, 0, 0, 0, 3, 0, 0, 0] ,[ 0, 0, 0, 0, -2, 0, 0, 0, -3, 0, 0, 3, 3, 5, 0] ,[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [ 0, 0 ,0 ,0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [ 0,0 ,0 ,0 ,0, 0, 2, 0, 5, 0, 0, -1, 4, 0, 3], [ 3, 1, 1, 2, 0, 0, 0, 0, 4, 2, 0, 0, 0, 1, 0] ,[ 0, 0, 0, 4, 1, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0] ,[ 0, 0, 0 ,0 ,0 ,0 ,0 ,0 ,0 ,3 ,4 ,0 ,0 ,0 ,0], [ 2, 0, 0, -4, 0, 0, 5, 4, 0, 0, 0, 0, 0, 4, 0], [ 0, 0, 5, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1], [ 0, 0, 0, 0, 0, 4, 0, 0, 0, 4, 0, 3, 0, 0, 0] ,[ 5, 0, 0, 0, -2, 0, 0, 3, 0, 0, -4, 0, 0, 0, 3], [ 0, 0, 0, 3, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 5], [ 0, 0, 0, 5, 0, 0, 0, 0 ,0, 0, 0, 0, 0, 0, 0], [ 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 0, 3, 0, 0]]
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            if matrix[i][j] != 0:
+                E = E +1
+
+    graph = createGraph(V, E)
+
+
     counter = 0 # counting edges
     for i in range(0,V):
         for j in range(0,V):
@@ -149,15 +155,13 @@ if __name__ == '__main__':
 # This code is contributed by Pratham76
 
 
-#finding the min cut max flow of electric network
 
+#finding the min cut max flow of electric network
 # Python program for finding min-cut in the given graph
 # Complexity : (E*(V^3))
 # Total augmenting path = VE and BFS
 # with adj matrix takes :V^2 times
-
 from collections import defaultdict
-
 
 # This class represents a directed graph
 # using adjacency matrix representation
@@ -207,6 +211,8 @@ class Graph:
         # from source, then return
         # true, else false
         return True if visited[t] else False
+
+    # visited = [0,7,6,1,2] visited[0] 0 , visited[4] 2 , visited[5] ERROR
 
     # Function for Depth first search
     # Traversal of the graph
@@ -333,24 +339,28 @@ class Graph:
         return max_flow
 
 #copy paste the table of the of graph
-graph = [[0, 16, 13, 0, 0, 0],
-         [0, 0, 10, 12, 0, 0],
-         [0, 4, 0, 0, 14, 0],
-         [0, 0, 9, 0, 0, 20],
-         [0, 0, 0, 7, 0, 4],
-         [0, 0, 0, 0, 0, 0]]
-#update the source and the sink (t)
-source = 0;
-sink = 5
-new_cable = 52
+graph = [[ 0, 36, 26, 35, 2, 1, 0, 31, 17, 0],[ 0, 0, 0, 20, 36, 24, 39, 33, 14, 10], [ 0, 19, 0, 0, 0, 20, 13, 9, 0, 0], [ 0, 0, 29, 0, 0, 10, 35, 15, 7, 5], [ 0, 0, 12, 22, 0, 27, 39, 1, 21, 0], [ 0, 0, 0, 0, 0, 0, 0, 0, 17, 13], [ 3, 0, 0, 0, 0, 30, 0, 0, 3, 20], [ 0, 0, 0, 0, 0, 19, 29, 0, 22, 10], [ 0, 0, 19, 0, 0, 0, 0, 0, 0, 9], [19, 0, 29, 0, 37, 0, 0, 0, 0, 0]]
+    #[[ 0, 20,5, 0, 0, 6, 36, 0, 0, 0], [ 0, 0, 2, 24, 10, 11, 29, 37, 0, 30], [ 0, 0, 0, 28, 23, 0, 17, 0, 18, 18], [ 3, 0, 0, 0, 0, 5, 30, 16, 35, 33], [27, 0, 0, 2, 0, 21, 20, 18, 25, 30], [ 0, 0, 22, 0, 0, 0, 6, 37, 0, 39] ,[ 0, 0, 0, 0, 0, 0, 0, 39, 0, 12], [17, 0, 24, 0, 0, 0, 0, 0, 0, 30], [35, 7, 0, 0, 0, 29, 4, 4, 0, 14], [ 5, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    #[[0., 3223.55, 1775.96, 1621.8, 1894.27], [3223.55, 0., 1466.02,1606.75, 1368.09], [1775.96, 1466.02, 0., 169.886, 134.315], [1621.8, 1606.75, 169.886, 0., 303.85], [1894.27, 1368.09,134.315, 303.85, 0.]]
 
+    #[[ 0, 20, 5, 0, 0, 6, 36, 0, 0, 0], [ 0, 0, 2, 24, 10, 11, 29, 37, 0, 30], [ 0, 0, 0, 28, 23, 0, 17, 0, 18, 18], [ 3, 0, 0, 0, 0, 5, 30, 16, 35, 33] ,[27, 0, 0, 2, 0, 21, 20, 18, 25, 30] ,[ 0, 0, 22, 0, 0, 0, 6, 37, 0, 39] ,[ 0, 0, 0, 0, 0, 0, 0, 39, 0, 12] ,[17, 0, 24, 0, 0, 0, 0, 0, 0, 30] ,[35, 7, 0, 0, 0, 29, 4, 4, 0, 14] ,[ 5, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+    #5,30],[0,0,22,0,0,0,6,37,0,39],[0,0,0,0,0,0,0,39,0,12],[17,0,24,0,0,0,0,0,0,30],[35,7,0,0,0,29,4,4,0,14],[5,0,0,0,0,0,0,0,0,0]]
+#update the source and the sink (t)
+source = 0
+#enter lower number of sink by 1
+sink = 9
+new_cable = 47
 graph_copy = copy.deepcopy(graph)
 g = Graph(graph_copy)
-
 
 min_cutes_v = g.minCut(source, sink)
 print("********* ex. max flow *******")
 print("the min cut is: ", min_cutes_v)
+for i in range(0,len(min_cutes_v)):
+    index_i = min_cutes_v[i][0]
+    index_j = min_cutes_v[i][1]
+    print(graph[index_i][index_j])
 graph_copy = copy.deepcopy(graph)
 g = Graph(graph_copy)
 print("original max flow= ",g.FordFulkerson(source,sink))
@@ -359,6 +369,11 @@ print("original max flow= ",g.FordFulkerson(source,sink))
 min_max_flow = []
 for i in range(0,len(min_cutes_v)):
     graph_copy = copy.deepcopy(graph)
+    #cutting all the vertexes of the min cut
+    for j in range(0,len(min_cutes_v)):
+        index_i = min_cutes_v[j][0]
+        index_j = min_cutes_v[j][1]
+        graph_copy[index_i][index_j] = 0
     #replacing each time another min cut
     index_i = min_cutes_v[i][0]
     index_j = min_cutes_v[i][1]
@@ -366,7 +381,7 @@ for i in range(0,len(min_cutes_v)):
     g = Graph(graph_copy)
     min_max_flow.append(g.FordFulkerson(source,sink))
 
-print(min_max_flow)
+print("the fixed electric matrix is:", min_max_flow)
 #finding min flow
 minimum = min_max_flow[0]
 for i in range(0,len(min_max_flow)):
@@ -378,7 +393,7 @@ print("the minimum max flow for G_fixed= ", minimum)
 
 
 # cities distances problem
-print("********* ex. cities distances *******")
+print("\n********* ex. cities distances *******")
 # Minimum Spanning Tree of a given connected,
 # undirected and weighted graph
 from collections import defaultdict
@@ -481,13 +496,17 @@ class Graph:
 
 
 # Driver code
-matrix = [ [0, 2, 0, 6, 0],
+matrix = [[0., 1642.56, 984.753, 1291.78, 897.915, 1093.82, 654.388, 1417.73, 903.44], [1642.56, 0., 2375.62, 415.114, 1443.77, 753.42, 2170.55, 574.377, 1901.4], [984.753, 2375.62, 0., 2119.65, 1875.74, 2010.35, 1218.83, 2313.72, 560.369], [1291.78, 415.114, 2119.65, 0., 1030.94, 342.041, 1775.96, 293.5, 1711.17], [897.915, 1443.77, 1875.74, 1030.94, 0., 690.356, 974.814, 948.932, 1754.95], [1093.82, 753.42, 2010.35, 342.041, 690.356, 0., 1494.37, 327.466, 1683.57], [654.388, 2170.55, 1218.83, 1775.96, 974.814, 1494.37, 0., 1813.92, 1411.8], [1417.73, 574.377, 2313.72, 293.5, 948.932, 327.466, 1813.92, 0., 1948.56], [903.44, 1901.4, 560.369, 1711.17, 1754.95, 1683.57, 1411.8, 1948.56, 0.]]
+    #[[0., 3223.55, 1775.96, 1621.8, 1894.27], [3223.55, 0., 1466.02,1606.75, 1368.09], [1775.96, 1466.02, 0., 169.886, 134.315], [1621.8, 1606.75, 169.886, 0., 303.85], [1894.27, 1368.09,134.315, 303.85, 0.]]
+
+
+'''[ [0, 2, 0, 6, 0],
             [2, 0, 3, 8, 5],
             [0, 3, 0, 0, 7],
             [6, 8, 0, 0, 9],
-            [0, 5, 7, 9, 0]]
-cities= ["london","nicosia","tel-aviv","Holon","Herzelia"]
-v = 5
+            [0, 5, 7, 9, 0]]'''
+cities= ["Bratislava", "Douglas", "Kyiv", "London", "Monaco", "Paris", "Podgorica", "Saint Helier", "Vilnius"]
+v = 9
 g = Graph(v)
 #set the ne edges by the matrix
 for i in range(0,v):
@@ -504,3 +523,9 @@ g.addEdge(2, 3, 4)
 g.KruskalMST(cities)
 
 # This code is contributed by Neelam Yadav
+
+
+#matrix multification
+
+# Program to multiply two matrices using nested loops
+# in progress....
